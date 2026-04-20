@@ -6,9 +6,9 @@ from esphome.const import CONF_ID
 CODEOWNERS = ["@ILiveInAHouse"]
 DEPENDENCIES = []
 AUTO_LOAD = [ ]
-MULTI_CONF = True
+MULTI_CONF = False
 
-from . import WindowSimpleHub, window_simple_ns
+from esphome.components.window_simple import WindowSimpleHub, window_simple_ns
 
 # Key for the parent ID in YAML
 CONF_WINDOW_SIMPLE_ID = "window_simple_id"

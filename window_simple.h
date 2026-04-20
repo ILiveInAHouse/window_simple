@@ -36,7 +36,7 @@ class WindowSimple : public PollingComponent {
     }
     
   protected:
-    number::Number *percentage_number_{ Lodge };
+    number::Number *percentage_number_{ nullptr };
     float current_internal_value_ = 0.0f;
     
 };
