@@ -8,7 +8,7 @@ DEPENDENCIES = []
 AUTO_LOAD = [ ]
 MULTI_CONF = True
 
-from . import WindowSimple, window_simple_ns
+from . import WindowSimpleHub, window_simple_ns
 
 # Key for the parent ID in YAML
 CONF_WINDOW_SIMPLE_ID = "window_simple_id"
