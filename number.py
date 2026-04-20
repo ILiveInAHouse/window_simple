@@ -20,7 +20,7 @@ CONF_WINDOW_SIMPLE_ID = "window_simple_id"
 CONFIG_SCHEMA = (
     number.number_schema(number.Number)
     .extend({
-        cv.GenerateID(CONF_WINDOW_SIMPLE_ID): cv.use_id(WindowSimple),
+        cv.GenerateID(CONF_WINDOW_SIMPLE_ID): cv.use_id(WindowSimpleHub),
     })
     .extend(cv.COMPONENT_SCHEMA)
 )

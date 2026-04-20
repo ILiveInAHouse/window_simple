@@ -11,12 +11,12 @@ AUTO_LOAD = [ ]
 CONF_WINDOWCONTROLLER_ID = "windowcontroller_id"
 
 window_simple_ns = cg.esphome_ns.namespace("window_simple")
-WindowSimple = window_simple_ns.class_("WindowSimple", cg.PollingComponent)
+WindowSimpleHub = window_simple_ns.class_("WindowSimpleHub", cg.PollingComponent)
 
 CONFIG_SCHEMA = (
     cv.COMPONENT_SCHEMA.extend(
         {
-            cv.GenerateID(): cv.declare_id(WindowSimple),
+            cv.GenerateID(): cv.declare_id(WindowSimpleHub),
         }
     )
     .extend(cv.polling_component_schema("5s"))
