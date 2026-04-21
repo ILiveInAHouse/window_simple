@@ -13,4 +13,14 @@ number:
     unit_of_measurement: "%"
     icon: "mdi:gauge"
     mode: SLIDER
+
+cover:
+  - platform: window_simple
+    window_simple_id: window_simple_hub_id
+    # device_class: window
+    which_motor: MOTOR_A
+  - platform: window_simple
+    window_simple_id: window_simple_hub_id
+    # device_class: window
+    which_motor: MOTOR_B
 ```
