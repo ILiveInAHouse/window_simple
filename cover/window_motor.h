@@ -16,6 +16,8 @@ class WindowSimpleMotorClass : public WindowSimpleClient, public PollingComponen
          this->whichMotor = whichMotor_;
       }
       WhichMotorEnum whichMotor;
+      void update() override;
+      void publish_info() override;
 };
 }
 }

@@ -37,7 +37,7 @@ class WindowSimpleHub : public PollingComponent {
     // void on_safe_shutdown() override;
     // void on_shutdown() override;
     void print_number_change(float new_n);
-    void publish_info() override;
+    void publish_info();
   
     // This is called by the Python code to link
     //   the UI slider to this class
