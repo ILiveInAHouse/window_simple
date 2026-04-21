@@ -8,7 +8,7 @@ CODEOWNERS = ["@ILiveInAHouse"]
 DEPENDENCIES = []
 AUTO_LOAD = [ ]
 
-CONF_WINDOWCONTROLLER_ID = "windowcontroller_id"
+CONF_WINDOWSIMPLE_ID = "windowsimple_id"
 
 window_simple_ns = cg.esphome_ns.namespace("window_simple")
 WindowSimpleHub = window_simple_ns.class_("WindowSimpleHub", cg.PollingComponent)
@@ -21,6 +21,16 @@ CONFIG_SCHEMA = (
     )
     .extend(cv.polling_component_schema("5s"))
 )
+
+WINDOWSIMPLE_CLIENT_SCHEMA = cv.Schema(
+    {
+        cv.GenerateID(CONF_WINDOWSIMPLE_ID): cv.use_id(WindowSimpleHub),
+    }
+)
+
+async def register_windowsimple_child(var, config):
+    parent = await cg.get_variable(config[CONF_WINDOWSIMPLE_ID])
+    cg.add(parent.register_child(var))
 
 async def to_code(config):
     # Declare new component

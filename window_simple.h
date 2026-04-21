@@ -2,13 +2,17 @@
 
 #include "esphome/core/component.h"
 #include "esphome/components/number/number.h"
+#include "window_simple_child.h"
 
 // Namespace definition
 namespace esphome {
 namespace window_simple {
 
+enum WhichMotorEnum { MOTOR_NONE = 0, MOTOR_A = 1, MOTOR_B = 2 };
+
 // Forward declaration so the Number knows the Hub exists
 class WindowSimpleHub;
+class WindowControllerClient;
 
 // Create a non-abstract number class
 class WindowPositionNumber : public number::Number {
@@ -27,12 +31,12 @@ class WindowSimpleHub : public PollingComponent {
     // WindowSimple();
     
     // Standard component functions to override
-    // void setup() override;
+    void setup() override;
     void dump_config() override;
     void update() override;
     // void on_safe_shutdown() override;
     // void on_shutdown() override;
-    void print_change(float new_n);
+    void print_number_change(float new_n);
   
     // This is called by the Python code to link
     //   the UI slider to this class
@@ -49,6 +53,7 @@ class WindowSimpleHub : public PollingComponent {
     }
 
   protected:
+    std::vector<WindowSimpleClient *> children_;
     WindowPositionNumber *percentage_number_{ nullptr };
     
 };
