@@ -17,5 +17,8 @@ void WindowSimpleHub::dump_config() {
     LOG_UPDATE_INTERVAL(this);
 }
 
+void WindowSimpleHub::print_change(float new_n) {
+    ESP_LOGI(TAG, "new_n=%f", new_n);
+}
 }
 }

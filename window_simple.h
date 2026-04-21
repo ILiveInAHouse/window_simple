@@ -7,12 +7,21 @@
 namespace esphome {
 namespace window_simple {
 
+// Forward declaration so the Number knows the Hub exists
+class WindowSimpleHub;
+
 // Create a non-abstract number class
 class WindowPositionNumber : public number::Number {
- protected:
+public:
+  // Store a pointer to the parent hub
+  void set_parent(WindowSimpleHub *parent) { this->parent_ = parent; }
+protected:
+  WindowSimpleHub *parent_;
+
   void control(float value) override {
     this->publish_state(value);
     // You can also call a parent method here if you want
+    this->parent_->print_change(value);
   }
 };
 
@@ -27,15 +36,18 @@ class WindowSimpleHub : public PollingComponent {
     void update() override;
     // void on_safe_shutdown() override;
     // void on_shutdown() override;
-
-    // This is called by the Python code to link the UI slider to this class
+    void print_change(float new_n);
+  
+    // This is called by the Python code to link
+    //   the UI slider to this class
     void set_window_position_number(WindowPositionNumber *n) {
       this->percentage_number_ = n;
+      // Tell the child who its parent is
+      this->percentage_number_->set_parent(this);
     }
 
   protected:
-    number::Number *percentage_number_{ nullptr };
-    float current_internal_value_ = 0.0f;
+    WindowPositionNumber *percentage_number_{ nullptr };
     
 };
 
