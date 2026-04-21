@@ -7,6 +7,14 @@ namespace window_simple {
 
 static const char *TAG = "window_simple_component";
 
+void WindowPositionNumber::control(float value) {
+    this->publish_state(value);
+    // You can also call a parent method here if you want
+    if (this->parent_ != nullptr) {
+        this->parent_->print_change(value);
+    }
+}
+
 void WindowSimpleHub::update() {
 }
 

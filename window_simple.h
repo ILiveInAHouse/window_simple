@@ -18,11 +18,7 @@ public:
 protected:
   WindowSimpleHub *parent_;
 
-  void control(float value) override {
-    this->publish_state(value);
-    // You can also call a parent method here if you want
-    this->parent_->print_change(value);
-  }
+  void control(float value) override;
 };
 
 class WindowSimpleHub : public PollingComponent {
@@ -44,6 +40,12 @@ class WindowSimpleHub : public PollingComponent {
       this->percentage_number_ = n;
       // Tell the child who its parent is
       this->percentage_number_->set_parent(this);
+
+      // Instead of a parent pointer, you can register a callback that
+      //   runs the parent's method
+      // this->percentage_number_->add_on_state_callback([this](float value) {
+      //     this->on_slider_changed(value);
+      // });
     }
 
   protected:
