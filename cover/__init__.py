@@ -15,8 +15,8 @@ CONF_WINDOW_NUMBER = "window_number"
 CONF_FAULTS = "faults"
 CONF_WHICH_MOTOR = "which_motor"
 
-WindowSimpleChild = window_simple_ns.class_(
-    "WindowSimpleChild", cg.PollingComponent
+WindowSimpleMotorClass = window_simple_ns.class_(
+    "WindowSimpleMotorClass", cg.PollingComponent
 )
 
 WhichMotor = window_simple_ns.enum("WhichMotorEnum")
@@ -28,11 +28,11 @@ MOTOR_ENUMS = {
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.declare_id(WindowSimpleChild),
+        cv.GenerateID(): cv.declare_id(WindowSimpleMotorClass),
         cv.Required(CONF_WHICH_MOTOR): cv.enum(MOTOR_ENUMS, upper=True, space="_"),
     }
 #    .extend(cv.polling_component_schema("5s"))
-) .extend(WINDOWCONTROLLER_CLIENT_SCHEMA)
+) .extend(WINDOWSIMPLE_CLIENT_SCHEMA)
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])

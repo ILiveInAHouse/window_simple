@@ -1,11 +1,11 @@
-#include "child_class.h"
+#include "window_motor.h"
 
 #include "esphome/core/log.h"
 
 namespace esphome {
 namespace window_simple {
 
-void WindowSimpleChildClass::child_setup() {
+void WindowSimpleMotorClass::child_setup() {
 }
 
 }

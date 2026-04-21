@@ -18,6 +18,9 @@ void WindowPositionNumber::control(float value) {
 void WindowSimpleHub::update() {
 }
 
+void WindowSimpleHub::publish_info() {
+}
+
 void WindowSimpleHub::setup() {
     // each component type (sensor, fan, etc) is a new child
     // each component type's device_id specified in the .yaml is a new child
@@ -35,6 +38,11 @@ void WindowSimpleHub::dump_config() {
 
 void WindowSimpleHub::print_number_change(float new_n) {
     ESP_LOGI(TAG, "new_n=%f", new_n);
+}
+
+void WindowSimpleHub::register_child(WindowSimpleClient *obj) {
+  this->children_.push_back(obj);
+  obj->set_parent(this);
 }
 }
 }

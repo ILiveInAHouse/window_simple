@@ -8,7 +8,7 @@ CODEOWNERS = ["@ILiveInAHouse"]
 DEPENDENCIES = []
 AUTO_LOAD = [ ]
 
-CONF_WINDOWSIMPLE_ID = "windowsimple_id"
+CONF_WINDOWSIMPLE_ID = "window_simple_id"
 
 window_simple_ns = cg.esphome_ns.namespace("window_simple")
 WindowSimpleHub = window_simple_ns.class_("WindowSimpleHub", cg.PollingComponent)
